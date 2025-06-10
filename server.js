@@ -24,6 +24,7 @@ app.use(
     })
 )
 app.set('view engine', 'ejs')
+app.use(express.static('public/'));
 
 
 const homeRouter = require('./routes/home.routes')

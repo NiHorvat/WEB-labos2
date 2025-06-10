@@ -10,10 +10,10 @@ router.use(cookieParser())
 router.use(bodyParser.urlencoded({ extended: true }));
 
 
-
 const userID = uuidv4();
 
 router.get('/', (req,res) => {
+
     res.render('home', {testText : req.sessionID});
     req.session.user = userID; //znaci dok modificiramo taj objekt onda se on nece promijeniti
     if(!req.session.cart)
