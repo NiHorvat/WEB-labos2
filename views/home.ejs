@@ -3,18 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/home.css">
     <title>Document</title>
 </head>
 <body>
     <%- include('partials/navbar.ejs') %>
 
-    <%= testText %>
+
+    <div class = "main-body">
+
+            <div class="categories">
+                <li><a href="/home/categories/Bread">Kruh</a></li>
+                <li><a href="/home/categories/Burgers">Burgeri</a></li>
+                <li><a href="/home/categories/Chicken">Piletina</a></li>
+                <li><a href="/home/categories/Coockies">Keksi</a></li>
+                <li><a href="/home/categories/Fish">Riba</a></li>
+                <li><a href="/home/categories/Muffins">Muffini</a></li>
+                <li><a href="/home/categories/Pasta">Tjestenina</a></li>
+                <li><a href="/home/categories/Pizza">Pizza</a></li>
+                <li><a href="/home/categories/Ramen">Ramen</a></li>
+                <li><a href="/home/categories/Sandwich">Sendvič</a></li>
+            </div>
+            
+            <div class = "welcome-page" id = "welcome-page"></div>
+        
+            <%- include('partials/infobar.ejs') %>
+            <%- include('partials/products.ejs') %>
+    </div>
+
+
+
 
     <form action="home/getProducts/:id" method="post">
         <input type="hidden" name="id" value="test">
 
         <input type="submit" value = "Add to cart">
     </form>
+
+
+
 
 </body>
 </html>

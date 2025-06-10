@@ -27,9 +27,6 @@ app.set('view engine', 'ejs')
 app.use(express.static('public/'));
 
 
-const homeRouter = require('./routes/home.routes')
-app.use('/home', homeRouter)
-
 
 //at once redirect the page to the /home
 // "/" will not be used for anything
@@ -42,6 +39,12 @@ app.get('/',(req, res) =>{
     res.redirect('/home');
     console.log('-----------------------------------');
 })
+
+
+const homeRouter = require('./routes/home.routes');
+app.use('/home', homeRouter);
+const cartRouter = require('./routes/cart.routes');
+app.use('/cart', cartRouter);
 
 
 

@@ -5,37 +5,30 @@ const bodyParser = require('body-parser');
 const { 
     v4: uuidv4,
 } = require('uuid');
+const getCategoryItems = require('../data/data-handler').getCategoryItems
+
 router.use(express.json())
 router.use(cookieParser())
 router.use(bodyParser.urlencoded({ extended: true }));
-
 
 const userID = uuidv4();
 
 router.get('/', (req,res) => {
 
-    res.render('home', {testText : req.sessionID});
-    req.session.user = userID; //znaci dok modificiramo taj objekt onda se on nece promijeniti
+    res.render('home', {sessionID : req.sessionID});
+    if(!req.session.user)
+        req.session.user = userID; //znaci dok modificiramo taj objekt onda se on nece promijeniti
     if(!req.session.cart)
         req.session.cart = [];
 })
 
-
-/*
-router.get('/:categoryID', (req,res) => {
-    console.log('-----------------------------------');
-    console.log(req.session.id);
-    console.log(req.session);
-    console.log('-----------------------------------');
-    res.render('category', {'sessionID' : req.session.id})
-})
-*/ 
-
-
 //add an item to cart
+//POST REQUEST
 router.post('/getProducts/:id',(req,res) => {
 
     const id = req.body.id;
+    
+    console.log(`sessionID : ${req.sessionID}`)
     console.log(`id : ${id}`);
 
     const found = req.session.cart.find((element) =>{
@@ -53,5 +46,15 @@ router.post('/getProducts/:id',(req,res) => {
 
 })
 
+router.get('/categories/:categoryName', (req,res) => {
+    console.log('-----------------------------------');
+    console.log(req.session.id);
+    console.log(req.session);
+    console.log('-----------------------------------');
+
+    const products = getCategoryItems(req.params.categoryName);
+
+    res.send(products)
+})
 
 module.exports = router
