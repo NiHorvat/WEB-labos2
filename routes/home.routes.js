@@ -28,8 +28,8 @@ router.post('/getProducts/:id',(req,res) => {
 
     const id = req.body.id;
     
-    console.log(`sessionID : ${req.sessionID}`)
-    console.log(`id : ${id}`);
+    //console.log(`sessionID : ${req.sessionID}`)
+    //console.log(`id : ${id}`);
 
     const found = req.session.cart.find((element) =>{
         if(element.id === id) return element;
