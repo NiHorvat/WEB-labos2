@@ -20,6 +20,7 @@ router.get('/', (req,res) => {
         req.session.cart = [];
 })
 
+
 /*
 router.get('/:categoryID', (req,res) => {
     console.log('-----------------------------------');
