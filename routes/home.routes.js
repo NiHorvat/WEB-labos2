@@ -66,4 +66,5 @@ router.get('/categories/:categoryName', (req,res) => {
     res.json({products : products,cart : cart})
 })
 
-module.exports = router
+
+module.exports = {homerouter : router, cart : cart}

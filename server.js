@@ -41,7 +41,7 @@ app.get('/',(req, res) =>{
 })
 
 
-const homeRouter = require('./routes/home.routes');
+const homeRouter = require('./routes/home.routes').homerouter;
 app.use('/home', homeRouter);
 const cartRouter = require('./routes/cart.routes');
 app.use('/cart', cartRouter);
